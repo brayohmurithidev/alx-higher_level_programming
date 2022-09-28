@@ -1,5 +1,3 @@
-
-
 #!/usr/bin/python3
 """A module that contains the function from_json_string(...)"""
 import json
