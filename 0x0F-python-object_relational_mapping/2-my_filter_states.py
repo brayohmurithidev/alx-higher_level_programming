@@ -13,11 +13,9 @@ if __name__ == "__main__":
             port=3306
         )
         cursor = db.cursor()
-        sql = """SELECT * FROM states
-        WHERE CAST(name AS BINARY) = CAST('{}' AS BINARY)
-        ORDER BY states.id;"""
-        name = sys.argv[4]
-        cursor.execute(sql.format(name))
+        sql = "SELECT * FROM states WHERE name= %s"
+        name = (sys.argv[4],)
+        cursor.execute(sql, name)
         results = cursor.fetchall()
         for result in results:
             print(result)
