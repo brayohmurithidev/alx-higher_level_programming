@@ -19,6 +19,4 @@ if __name__ == "__main__":
         state = (sys.argv[4],)
         cur.execute(sql, state)
         cities = cur.fetchall()
-
-        for city in cities:
-            print(city)
+        print(", ".join(map(lambda x: x[0], cities)))
