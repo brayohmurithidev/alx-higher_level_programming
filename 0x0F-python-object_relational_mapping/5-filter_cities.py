@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
         cur = db.cursor()
         # SQL TO SELECT A LIST OF CITIES IN A GIVEN STATE
-        sql = 'SELECT cities.name FROM cities INNER JOIN states ON cities.state_id = states.id WHERE states.name = %s'
+        sql = 'SELECT cities.name FROM cities INNER JOIN states ON cities.state_id = states.id WHERE states.name = %s ORDER BY cities.id ASC'
         state = (sys.argv[4],)
         cur.execute(sql, state)
         cities = cur.fetchall()
