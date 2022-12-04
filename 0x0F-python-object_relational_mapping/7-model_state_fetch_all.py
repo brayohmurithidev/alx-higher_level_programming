@@ -16,6 +16,6 @@ if __name__ == "__main__":
     session = Session()
     results = session.query(State).all()
     for result in results:
-        print(result.id, result.name)
+        print("{}: {}".format(result.id, result.name))
 
     session.close()
