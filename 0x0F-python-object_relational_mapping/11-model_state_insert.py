@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Search with state argument given
+Insert record and output inserted
 """
 import sys
 from sqlalchemy.orm import sessionmaker
