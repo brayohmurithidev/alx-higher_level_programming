@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""select all cities"""
+"""A script that lists cities by states in a database"""
 import MySQLdb
 import sys
 
@@ -11,12 +11,17 @@ if __name__ == "__main__":
         db=sys.argv[3],
         port=3306
     )
-    cur = db.cursor()
-    sql = 'SELECT  cities.id, cities.name, states.name\
-         FROM cities \
-            INNER JOIN states ON cities.state_id = states.id ORDER BY cities.id ASC'
-    cur.execute(sql)
-    results = cur.fetchall()
 
-    for result in results:
-        print(result)
+    cursor = db.cursor()
+    cursor.execute("""
+        SELECT cities.id, cities.name, states.name
+        FROM cities
+        INNER JOIN states
+        ON cities.state_id = states.id
+        ORDER BY cities.id;
+    """)
+
+    records = cursor.fetchall()
+    for record in records:
+        print(record)
+    db.close()
